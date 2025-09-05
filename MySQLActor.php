@@ -1,14 +1,18 @@
 <?php
 include "db.php";
 include "ActorStrategy.php";
+// Esta clase implementa **Strategy Pattern** porque sigue la interfaz ActorStrategy.
+// Podrías cambiar MySQLActor por otra clase que implemente la misma interfaz sin modificar el resto del código.
 
 class MySQLActor implements ActorStrategy {
     private $conn;
-
+// Aquí se aplica **Dependency Injection** al pasar $connection en el constructor.
     public function __construct($connection) {
         $this->conn = $connection;
     }
-
+// También se aplica el **Repository Pattern**: MySQLActor funciona como un repositorio 
+    // que abstrae las operaciones CRUD sobre la tabla actor, separando la lógica de acceso a datos
+    // del resto de la aplicación.
     public function get($id = null) {
         if ($id) {
             $sql = "SELECT * FROM actor WHERE actor_id = $id";

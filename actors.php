@@ -1,10 +1,15 @@
 <?php
+// Aquí se aplica **Dependency Injection**: se inyecta el repositorio $actorRepo (MySQLActor) en el flujo del controlador.
+// Esto permite que la clase actors.php no dependa directamente de la implementación de la base de datos, 
+// sino de una abstracción (ActorStrategy).
 header("Content-Type: application/json");
 include "db.php";
 include "MySQLActor.php";
 
 $actorRepo = new MySQLActor($conn);
 $method = $_SERVER['REQUEST_METHOD'];
+// También se aplica **Command Pattern de manera implícita** en el switch de métodos HTTP:
+// GET, POST, PUT, DELETE actúan como "comandos" que ejecutan acciones concretas sobre el repositorio.
 
 switch ($method) {
     case 'GET':
