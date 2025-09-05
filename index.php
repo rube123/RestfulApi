@@ -8,7 +8,7 @@ $request = trim($_SERVER['REQUEST_URI'], "/");
 $method  = $_SERVER['REQUEST_METHOD'];
 
 if (strpos($request, "sakila-php/actors") !== false) {
-    require "actors.php";
+    require "controllers/actors.php";
 } else {
     echo json_encode(["error" => "Ruta no encontrada", "debug" => $request]);
 }

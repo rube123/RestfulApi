@@ -1,4 +1,8 @@
 <?php
+include "../db.php";
+include "../repositories/MySQLActor.php";
+include "../strategies/ActorStrategy.php";
+
 // Aquí se aplica **Dependency Injection**: se inyecta el repositorio $actorRepo (MySQLActor) en el flujo del controlador.
 // Esto permite que la clase actors.php no dependa directamente de la implementación de la base de datos, 
 // sino de una abstracción (ActorStrategy).
